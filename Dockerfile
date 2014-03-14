@@ -13,8 +13,11 @@ RUN dpkg -i /tmp/go-server.deb
 EXPOSE 8153
 EXPOSE 8154
 
-VOLUME /var/lib/go-server/db/h2db # Go db so it is not part of the container
-VOLUME /go-server # This is where we will place go related files - password files, etc.
+# Go db so it is not part of the container
+VOLUME /var/lib/go-server/db
+
+# This is where we will place go related files - password files, etc.
+VOLUME /go-server
 
 ADD start.sh /usr/local/bin/start
 
