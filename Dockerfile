@@ -18,4 +18,4 @@ VOLUME /go-server # This is where we will place go related files - password file
 
 ADD start.sh /usr/local/bin/start
 
-CMD chown -R go:go /var/lib/go-server/db/h2db && start
+CMD chown -R go:go /var/lib/go-server/db && start
