@@ -5,15 +5,16 @@ MAINTAINER Ashlin Eldridge
 RUN apt-get install -y unzip git subversion
 
 # Install the Go server
-# RUN wget http://download01.thoughtworks.com/go/13.4.1/ga/go-server-13.4.1-18342.deb -O /tmp/go-server.deb
-ADD go-server-13.4.1-18342.deb /tmp/go-server.deb
+RUN wget http://download01.thoughtworks.com/go/13.4.1/ga/go-server-13.4.1-18342.deb -O /tmp/go-server.deb
+# ADD go-server-13.4.1-18342.deb /tmp/go-server.deb
 RUN dpkg -i /tmp/go-server.deb
 
 # Expose ports for HTTP and HTTPS
 EXPOSE 8153
 EXPOSE 8154
 
-VOLUME /var/lib/go-server/db/h2db
+VOLUME /var/lib/go-server/db/h2db # Go db so it is not part of the container
+VOLUME /go-server # This is where we will place go related files - password files, etc.
 
 ADD start.sh /usr/local/bin/start
 
