@@ -15,10 +15,12 @@ EXPOSE 8154
 
 # Go db so it is not part of the container
 VOLUME /var/lib/go-server/db
+# Go configuration
+VOLUME /etc/go
 
 # This is where we will place go related files - password files, etc.
 VOLUME /go-server
 
 ADD start.sh /usr/local/bin/start
 
-CMD chown -R go:go /var/lib/go-server/db && start
+CMD chown -R go:go /var/lib/go-server/db && chown -R go:go /etc/go && start
