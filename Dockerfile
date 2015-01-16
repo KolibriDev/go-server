@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y unzip git subversion
 
 # Install the Go server
-# RUN wget http://download01.thoughtworks.com/go/13.4.1/ga/go-server-13.4.1-18342.deb -O /tmp/go-server.deb
+RUN wget http://download01.thoughtworks.com/go/13.4.1/ga/go-server-13.4.1-18342.deb -O /tmp/go-server.deb
 ADD go-server-13.4.1-18342.deb /tmp/go-server.deb
 RUN dpkg -i /tmp/go-server.deb
 
